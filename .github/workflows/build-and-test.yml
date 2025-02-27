@@ -1,0 +1,57 @@
+﻿name: build-and-test
+on:
+  pull_request:
+    branches:
+      - main
+
+env:
+    "PipelineEnvironment": true
+
+jobs:
+  build-and-test:
+    runs-on: windows-latest  # ✅ Windows needed for MAUI workload support
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 9.0.x
+
+      - name: Install .NET MAUI workload
+        run: dotnet workload install maui
+
+      - name: Enable MAUI workload resolver
+        shell: pwsh
+        run: echo "DOTNET_WORKLOAD_RESOLVER_SUGGESTION_SILENT=1" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8
+
+      - name: Install dependencies with retry
+        shell: pwsh
+        run: |
+          $retries = 5
+          $baseWaitTime = 15
+          $exponent = 2
+
+          for ($i = 1; $i -le $retries; $i++) {
+            if (dotnet restore) {
+              break
+            }
+            if ($i -lt $retries) {
+              $waitTime = [math]::Pow($baseWaitTime * $exponent, $i - 1)
+              Write-Host "dotnet restore failed, retrying in $waitTime seconds..."
+              Start-Sleep -Seconds $waitTime
+            } else {
+              Write-Host "dotnet restore failed after $retries retries."
+              exit 1
+            }
+          }
+
+      - name: Build for all target frameworks
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Test (only .NET 9.0)
+        run: dotnet test test/Soenneker.Maui.Admob.Tests/Soenneker.Maui.Admob.Tests.csproj --framework net9.0 --no-restore --verbosity normal
+
+      - name: Pack
+        run: dotnet pack --no-build --configuration Release --output .

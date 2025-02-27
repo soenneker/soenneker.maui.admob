@@ -1,0 +1,107 @@
+﻿name: publish-package
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - v*
+
+env:
+    "PipelineEnvironment": true
+
+jobs:
+  publish-package:
+    runs-on: windows-latest  # ✅ Switch to Windows
+
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setting up build version
+        shell: pwsh
+        run: |
+          $version = "3.0.$env:GITHUB_RUN_NUMBER"
+          echo "BUILD_VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 9.0.x
+
+      - name: Install .NET MAUI workload
+        run: dotnet workload install maui
+
+      - name: Enable MAUI workload resolver
+        shell: pwsh
+        run: echo "DOTNET_WORKLOAD_RESOLVER_SUGGESTION_SILENT=1" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8
+
+      - name: Install dependencies with retry
+        shell: pwsh
+        run: |
+          $retries = 5
+          $baseWaitTime = 15
+          $exponent = 2
+
+          for ($i = 1; $i -le $retries; $i++) {
+            if (dotnet restore) {
+              break
+            }
+            if ($i -lt $retries) {
+              $waitTime = [math]::Pow($baseWaitTime * $exponent, $i - 1)
+              Write-Host "dotnet restore failed, retrying in $waitTime seconds..."
+              Start-Sleep -Seconds $waitTime
+            } else {
+              Write-Host "dotnet restore failed after $retries retries."
+              exit 1
+            }
+          }
+
+      - name: Build for all frameworks
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Test (only .NET 9.0)
+        run: dotnet test test/Soenneker.Maui.Admob.Tests/Soenneker.Maui.Admob.Tests.csproj --framework net9.0 --no-restore --verbosity normal
+
+      - name: Pack
+        run: dotnet pack --no-build --configuration Release --output .
+
+      - name: Publish to NuGet with retry
+        shell: pwsh
+        run: |
+          $nupkg_files = Get-ChildItem -Path . -Filter "*.nupkg"
+          $retries = 5
+          $baseWaitTime = 20 
+          $exponent = 3.5
+          
+          for ($i = 1; $i -le $retries; $i++) {
+            if (dotnet nuget push $nupkg_files --source 'https://api.nuget.org/v3/index.json' --api-key "${{ secrets.NUGET_TOKEN }}" --skip-duplicate) {
+              break
+            }
+            if ($i -lt $retries) {
+              $waitTime = [math]::Pow($baseWaitTime * $exponent, $i - 1)
+              Write-Host "NuGet publish failed, retrying in $waitTime seconds..."
+              Start-Sleep -Seconds $waitTime
+            } else {
+              Write-Host "NuGet publish failed after $retries retries."
+              exit 1
+            }
+          }
+
+      - name: Add GitHub NuGet Source
+        run: |
+          dotnet nuget add source https://nuget.pkg.github.com/soenneker/index.json `
+            --name "github" `
+            --username "any" `
+            --password ${{ secrets.GH_TOKEN }} `
+            --store-password-in-clear-text
+
+      - name: Publish to GitHub Packages
+        shell: pwsh
+        run: |
+          $nupkg_files = Get-ChildItem -Path . -Filter "*.nupkg"
+          if ($nupkg_files) {
+            dotnet nuget push $nupkg_files --source "github" --api-key "${{ secrets.GH_TOKEN }}"
+          } else {
+            Write-Host "Error: No .nupkg files found!"
+            exit 1
+          }
+
