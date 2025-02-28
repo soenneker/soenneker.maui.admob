@@ -4,7 +4,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Maui;
 using Microsoft.Maui.Handlers;
 using Soenneker.Dtos.ProblemDetails;
-using Soenneker.Extensions.Configuration;
 using Soenneker.Extensions.Enumerable;
 using Soenneker.Maui.Admob.Constants;
 using Soenneker.Maui.Admob.Enums;
@@ -23,10 +22,10 @@ public class BannerAdHandler : ViewHandler<BannerAd, AdView>
     public BannerAdHandler(IConfiguration config, IAdMobServiceUtil adMobServiceUtil) : base(PropertyMapper)
     {
         _testDevices = config.GetValue<List<string>?>("AdMob:TestDevices");
-        _unitId = config.GetValueStrict<string>("AdMob:BannerUnitId");
+        var unitId = config.GetValue<string?>("AdMob:BannerUnitId");
         var testMode = config.GetValue<bool>("AdMob:TestMode");
 
-        if (testMode)
+        if (testMode || unitId.IsNullOrEmpty())
         {
             _unitId = AdmobUnitIdConstants.Banner;
         }
@@ -42,7 +41,7 @@ public class BannerAdHandler : ViewHandler<BannerAd, AdView>
 
     protected override AdView CreatePlatformView()
     {
-        var adView = BuildView();
+        AdView adView = BuildView();
 
         adView.AdListener = BuildListener();
         
