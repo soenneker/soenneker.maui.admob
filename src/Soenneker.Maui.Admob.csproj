@@ -40,6 +40,14 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <Compile Remove="NewFolder\**" />
+      <EmbeddedResource Remove="NewFolder\**" />
+      <MauiCss Remove="NewFolder\**" />
+      <MauiXaml Remove="NewFolder\**" />
+      <None Remove="NewFolder\**" />
+    </ItemGroup>
+
+    <ItemGroup>
         <None Include="..\CONTRIBUTING.md" Link="CONTRIBUTING.md" />
         <None Include="..\README.md" Pack="true" PackagePath="\" />
         <None Include="..\LICENSE" Pack="true" PackagePath="\" />
@@ -47,7 +55,12 @@
     </ItemGroup>
 
     <ItemGroup>
+        <PackageReference Include="Intellenum" Version="1.0.6" />
         <PackageReference Include="Microsoft.Maui.Controls" Version="9.0.40" />
+        <PackageReference Include="Soenneker.Dtos.ProblemDetails" Version="3.0.319" />
+        <PackageReference Include="Soenneker.Extensions.Configuration" Version="3.0.646" />
+        <PackageReference Include="Soenneker.Extensions.Enumerable" Version="3.0.466" />
+        <PackageReference Include="Soenneker.Utils.AsyncSingleton" Version="3.0.658" />
     </ItemGroup>
 
     <ItemGroup Condition="'$(TargetFramework)' == 'net9.0-android'">

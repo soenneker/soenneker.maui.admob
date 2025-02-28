@@ -1,11 +1,10 @@
 ﻿using Google.MobileAds;
 using Microsoft.Maui.Controls;
 using System;
-using System.Threading.Tasks;
 using Soenneker.Maui.Admob.Abstract;
 using UIKit;
 
-namespace Soenneker.Maui.Admob;
+namespace Soenneker.Maui.Admob.Platforms.iOS;
 
 // ReSharper disable once InconsistentNaming
 public class IOSAdmobService : IAdMobService
