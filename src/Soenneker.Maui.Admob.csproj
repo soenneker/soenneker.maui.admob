@@ -59,7 +59,7 @@
         <PackageReference Include="Microsoft.Maui.Controls" Version="9.0.40" />
         <PackageReference Include="Soenneker.Dtos.ProblemDetails" Version="3.0.324" />
         <PackageReference Include="Soenneker.Extensions.Configuration" Version="3.0.651" />
-        <PackageReference Include="Soenneker.Extensions.Enumerable" Version="3.0.471" />
+        <PackageReference Include="Soenneker.Extensions.Enumerable" Version="3.0.472" />
         <PackageReference Include="Soenneker.Utils.AsyncSingleton" Version="3.0.664" />
     </ItemGroup>
 
