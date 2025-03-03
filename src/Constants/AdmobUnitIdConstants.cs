@@ -5,5 +5,5 @@
 /// </summary>
 public static class AdmobUnitIdConstants
 {
-    public const string Banner = "ca-app-pub-3940256099942544/7301978222";
+    public const string Banner = "ca-app-pub-3940256099942544/6300978111";
 }

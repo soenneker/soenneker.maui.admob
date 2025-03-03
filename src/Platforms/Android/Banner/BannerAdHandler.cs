@@ -11,8 +11,9 @@ using Soenneker.Maui.Admob.Platforms.Android.Abstract;
 using Soenneker.Maui.Admob.Platforms.Android.Extensions;
 using System;
 using System.Collections.Generic;
+using Soenneker.Maui.Admob.Platforms.Android.Banner;
 
-namespace Soenneker.Maui.Admob.Platforms.Android.Banner;
+namespace Soenneker.Maui.Admob;
 
 public class BannerAdHandler : ViewHandler<BannerAd, AdView>
 {
@@ -27,10 +28,9 @@ public class BannerAdHandler : ViewHandler<BannerAd, AdView>
     {
     }
 
-    protected override void ConnectHandler(AdView platformView)
+    protected override AdView CreatePlatformView()
     {
-        base.ConnectHandler(platformView);
-
+        // Retrieve configuration and initialize the AdMob service before building the view
         if (MauiContext?.Services is IServiceProvider services)
         {
             var config = services.GetService<IConfiguration>();
@@ -50,14 +50,26 @@ public class BannerAdHandler : ViewHandler<BannerAd, AdView>
             adMobServiceUtil?.Init();
         }
 
-        platformView.AdUnitId = _unitId;
+        // Build the AdView with the correct AdUnitId and AdSize
+        AdView adView = BuildView();
+        adView.AdListener = BuildListener();
 
-        var configBuilder = new RequestConfiguration.Builder();
-        if (_testDevices.Populated())
-            configBuilder.SetTestDeviceIds(_testDevices);
+        // Apply test device configuration if available
+        var requestConfigBuilder = new RequestConfiguration.Builder();
+        if (_testDevices != null && _testDevices.Populated())
+            requestConfigBuilder.SetTestDeviceIds(_testDevices);
 
-        MobileAds.RequestConfiguration = configBuilder.Build();
-        platformView.LoadAd(new AdRequest.Builder().Build());
+        MobileAds.RequestConfiguration = requestConfigBuilder.Build();
+
+        // Load the ad
+        adView.LoadAd(new AdRequest.Builder().Build());
+
+        return adView;
+    }
+
+    protected override void ConnectHandler(AdView platformView)
+    {
+        base.ConnectHandler(platformView);
 
         if (VirtualView != null)
         {
@@ -108,14 +120,6 @@ public class BannerAdHandler : ViewHandler<BannerAd, AdView>
 
         platformView.Dispose();
         base.DisconnectHandler(platformView);
-    }
-
-    protected override AdView CreatePlatformView()
-    {
-        AdView adView = BuildView();
-        adView.AdListener = BuildListener();
-
-        return adView;
     }
 
     private AdView BuildView()
