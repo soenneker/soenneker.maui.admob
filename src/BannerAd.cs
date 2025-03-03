@@ -16,7 +16,7 @@ public class BannerAd : ContentView
     public event EventHandler? OnClosed;
 
     public static readonly BindableProperty AdmobAdSizeProperty =
-        BindableProperty.Create(nameof(Size), typeof(Enums.AdmobAdSize), typeof(BannerAd));
+        BindableProperty.Create(nameof(Size), typeof(AdmobAdSize), typeof(BannerAd));
 
     public static readonly BindableProperty ContentWidthProperty =
         BindableProperty.Create(nameof(ContentWidth), typeof(int), typeof(BannerAd), 0);

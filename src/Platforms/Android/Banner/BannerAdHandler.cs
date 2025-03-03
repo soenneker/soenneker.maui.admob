@@ -42,7 +42,7 @@ public class BannerAdHandler : ViewHandler<BannerAd, AdView>
                 var unitId = config.GetValue<string?>("AdMob:BannerUnitId");
                 var testMode = config.GetValue<bool>("AdMob:TestMode");
 
-                _unitId = testMode || string.IsNullOrEmpty(unitId)
+                _unitId = testMode || unitId.IsNullOrEmpty()
                     ? AdmobUnitIdConstants.Banner
                     : unitId;
             }
@@ -51,11 +51,12 @@ public class BannerAdHandler : ViewHandler<BannerAd, AdView>
         }
 
         // Build the AdView with the correct AdUnitId and AdSize
-        AdView adView = BuildView();
+        var adView = BuildView();
         adView.AdListener = BuildListener();
 
         // Apply test device configuration if available
         var requestConfigBuilder = new RequestConfiguration.Builder();
+
         if (_testDevices != null && _testDevices.Populated())
             requestConfigBuilder.SetTestDeviceIds(_testDevices);
 
@@ -124,7 +125,7 @@ public class BannerAdHandler : ViewHandler<BannerAd, AdView>
 
     private AdView BuildView()
     {
-        AdSize adSize = VirtualView?.Size == AdmobAdSize.Custom
+        var adSize = VirtualView?.Size == AdmobAdSize.Custom
             ? new AdSize(VirtualView.ContentWidth, VirtualView.ContentHeight)
             : VirtualView?.Size.ToAdSize() ?? AdSize.Banner;
 

@@ -7,7 +7,7 @@ public static class AdmobAdSizeExtensions
 {
     public static AdSize? ToAdSize(this AdmobAdSize admobAdSize)
     {
-        AdSize? adSize = admobAdSize.Name switch
+        var adSize = admobAdSize.Name switch
         {
             nameof(AdmobAdSize.Banner) => AdSize.Banner,
             nameof(AdmobAdSize.LargeBanner) => AdSize.LargeBanner,

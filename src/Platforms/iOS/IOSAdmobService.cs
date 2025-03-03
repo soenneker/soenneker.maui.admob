@@ -33,7 +33,7 @@ public class IOSAdmobService : IAdMobService
 
     public void LoadBannerAd(string adUnitId, View adContainer)
     {
-        UIViewController? viewController = UIApplication.SharedApplication.KeyWindow.RootViewController;
+        var viewController = UIApplication.SharedApplication.KeyWindow.RootViewController;
         _bannerView = new BannerView(AdSizeCons.Banner, new CoreGraphics.CGPoint(0, 0))
         {
             AdUnitId = adUnitId,
@@ -62,7 +62,7 @@ public class IOSAdmobService : IAdMobService
 
     public void ShowInterstitialAd()
     {
-        UIViewController? viewController = UIApplication.SharedApplication.KeyWindow.RootViewController;
+        var viewController = UIApplication.SharedApplication.KeyWindow.RootViewController;
         if (_interstitialAd != null && _interstitialAd.CanPresent(viewController, out _))
         {
             _interstitialAd.Present(viewController);
@@ -86,7 +86,7 @@ public class IOSAdmobService : IAdMobService
 
     public void ShowRewardedAd(Action rewardCallback)
     {
-        UIViewController? viewController = UIApplication.SharedApplication.KeyWindow.RootViewController;
+        var viewController = UIApplication.SharedApplication.KeyWindow.RootViewController;
         if (_rewardedAd != null && _rewardedAd.CanPresent(viewController, out _))
         {
             _rewardedAd.Present(viewController, () =>
