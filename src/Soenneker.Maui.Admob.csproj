@@ -60,7 +60,7 @@
         <PackageReference Include="Soenneker.Dtos.ProblemDetails" Version="3.0.331" />
         <PackageReference Include="Soenneker.Extensions.Configuration" Version="3.0.651" />
         <PackageReference Include="Soenneker.Extensions.Enumerable" Version="3.0.480" />
-        <PackageReference Include="Soenneker.Utils.AsyncSingleton" Version="3.0.667" />
+        <PackageReference Include="Soenneker.Utils.AsyncSingleton" Version="3.0.668" />
     </ItemGroup>
 
     <ItemGroup Condition="'$(TargetFramework)' == 'net9.0-android'">
