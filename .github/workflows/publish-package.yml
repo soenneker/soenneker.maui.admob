@@ -5,6 +5,8 @@ on:
       - main
     tags:
       - v*
+    paths-ignore:
+      - 'test/**'
 
 env:
     "PipelineEnvironment": true
