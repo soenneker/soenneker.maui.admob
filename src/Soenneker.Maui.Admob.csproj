@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<?xml version="1.0" encoding="utf-8"?><Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <TargetFrameworks>net9.0;net9.0-android;net9.0-ios</TargetFrameworks>
@@ -35,7 +35,7 @@
         <LangVersion>latest</LangVersion>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageIcon>icon.png</PackageIcon>
-    </PropertyGroup>
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild></PropertyGroup>
 
     <ItemGroup>
         
