@@ -85,7 +85,7 @@ jobs:
           dotnet nuget add source https://nuget.pkg.github.com/soenneker/index.json `
             --name "github" `
             --username "any" `
-            --password ${{ secrets.GH_TOKEN }} `
+            --password ${{ secrets.GH__TOKEN }} `
             --store-password-in-clear-text
 
       - name: Publish to GitHub Packages
@@ -93,7 +93,7 @@ jobs:
         run: |
           $nupkg_files = Get-ChildItem -Path . -Filter "*.nupkg"
           if ($nupkg_files) {
-            dotnet nuget push $nupkg_files --source "github" --api-key "${{ secrets.GH_TOKEN }}"
+            dotnet nuget push $nupkg_files --source "github" --api-key "${{ secrets.GH__TOKEN }}"
           } else {
             Write-Host "Error: No .nupkg files found!"
             exit 1
@@ -118,7 +118,7 @@ jobs:
             -Uri "https://api.github.com/repos/${{ github.repository }}/releases" `
             -Method Post `
             -Headers @{
-              Authorization = "Bearer ${{ secrets.GH_TOKEN }}"
+              Authorization = "Bearer ${{ secrets.GH__TOKEN }}"
               Accept        = "application/vnd.github+json"
             } `
             -Body $json_payload `
