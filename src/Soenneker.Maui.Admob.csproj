@@ -55,7 +55,7 @@
 
     <ItemGroup Condition="'$(TargetFramework)' == 'net9.0-android'">
       <PackageReference Include="Xamarin.GooglePlayServices.Ads.Lite">
-        <Version>124.0.0.2</Version>
+        <Version>124.0.0.3</Version>
       </PackageReference>
     </ItemGroup>
 
