@@ -1,4 +1,4 @@
-name: publish-package
+﻿name: publish-package
 on:
   push:
     branches:
@@ -26,7 +26,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v5
         with:
-          dotnet-version: 9.0.x
+          dotnet-version: 10.0.x
 
       - name: Install dependencies with retry
         shell: pwsh
@@ -53,7 +53,7 @@ jobs:
         run: dotnet build --configuration Release --no-restore
 
       - name: Test (only .NET 9.0)
-        run: dotnet test test/Soenneker.Maui.Admob.Tests/Soenneker.Maui.Admob.Tests.csproj --framework net9.0 --no-restore --verbosity normal
+        run: dotnet test test/Soenneker.Maui.Admob.Tests/Soenneker.Maui.Admob.Tests.csproj --framework net10.0 --no-restore --verbosity normal
 
       - name: Pack
         run: dotnet pack --no-build --configuration Release --output .

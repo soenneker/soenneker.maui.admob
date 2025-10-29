@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>net9.0;net9.0-android;net9.0-ios</TargetFrameworks>
+        <TargetFramework>net10.0;net10.0-android;net10.0-ios</TargetFramework>
         <SingleProject>true</SingleProject>
         <Nullable>enable</Nullable>
         <Platforms>AnyCPU</Platforms>
@@ -12,7 +12,7 @@
 
     <PropertyGroup>
         <Description>A cross-platform library for adding Google Admob ads to MAUI applications</Description>
-        <Version Condition="'$(BUILD_VERSION)' == ''">3.0.0</Version>
+        <Version Condition="'$(BUILD_VERSION)' == ''">4.0.0</Version>
         <Version Condition="'$(BUILD_VERSION)' != ''">$(BUILD_VERSION)</Version>
         <AssemblyName>Soenneker.Maui.Admob</AssemblyName>
         <PackageId>Soenneker.Maui.Admob</PackageId>
@@ -53,13 +53,13 @@
         <PackageReference Include="Soenneker.Utils.AsyncSingleton" Version="3.0.716" />
     </ItemGroup>
 
-    <ItemGroup Condition="'$(TargetFramework)' == 'net9.0-android'">
+    <ItemGroup Condition="'$(TargetFramework)' == 'net10.0-android'">
       <PackageReference Include="Xamarin.GooglePlayServices.Ads.Lite">
         <Version>124.0.0.3</Version>
       </PackageReference>
     </ItemGroup>
 
-    <ItemGroup Condition="'$(TargetFramework)' == 'net9.0-ios'">
+    <ItemGroup Condition="'$(TargetFramework)' == 'net10.0-ios'">
         <PackageReference Include="Xamarin.Google.iOS.MobileAds">
             <Version>8.13.0.3</Version>
         </PackageReference>
