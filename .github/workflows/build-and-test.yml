@@ -19,26 +19,36 @@ jobs:
         with:
           dotnet-version: 10.0.x
 
-      - name: Install dependencies with retry
+      - name: Restore workloads
         shell: pwsh
         run: |
-          $retries = 5
-          $baseWaitTime = 15
-          $exponent = 2
+          dotnet workload restore
 
-          for ($i = 1; $i -le $retries; $i++) {
-            if (dotnet restore) {
+      - name: Install dependencies with retry
+        shell: bash
+        run: |
+          retries=5
+          base_wait_time=15
+          exponent=2
+
+          for i in $(seq 1 $retries); do
+            echo "::group::dotnet restore (attempt $i/$retries)"
+            if dotnet restore -v detailed; then
+              echo "::endgroup::"
+              echo "✅ dotnet restore succeeded on attempt $i."
               break
-            }
-            if ($i -lt $retries) {
-              $waitTime = [math]::Pow($baseWaitTime * $exponent, $i - 1)
-              Write-Host "dotnet restore failed, retrying in $waitTime seconds..."
-              Start-Sleep -Seconds $waitTime
-            } else {
-              Write-Host "dotnet restore failed after $retries retries."
-              exit 1
-            }
-          }
+            else
+              echo "::endgroup::"
+              if [ "$i" -lt "$retries" ]; then
+                wait_time=$(( base_wait_time * (exponent ** (i - 1)) ))
+                echo "❌ dotnet restore failed (attempt $i). Retrying in ${wait_time}s…"
+                sleep "$wait_time"
+              else
+                echo "::error::dotnet restore failed after $retries attempts"
+                exit 1
+              fi
+            fi
+          done
 
       - name: Build for all target frameworks
         run: dotnet build --configuration Release --no-restore
