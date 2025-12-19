@@ -1,20 +1,18 @@
 ﻿using Soenneker.Maui.Admob.Platforms.Android.Abstract;
 using Android.Gms.Ads;
-using Soenneker.Utils.AsyncSingleton;
+using Soenneker.Utils.AsyncInitializers;
 
 namespace Soenneker.Maui.Admob.Platforms.Android;
 
 public class AdMobServiceUtil : IAdMobServiceUtil
 {
-    private readonly AsyncSingleton _initializer;
+    private readonly AsyncInitializer _initializer;
 
     public AdMobServiceUtil()
     {
-        _initializer = new AsyncSingleton((e, _) =>
+        _initializer = new AsyncInitializer((e) =>
         {
             MobileAds.Initialize(global::Android.App.Application.Context);
-
-            return new object();
         });
     }
 
