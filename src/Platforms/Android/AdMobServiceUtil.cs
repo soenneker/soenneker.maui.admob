@@ -1,6 +1,6 @@
 ﻿using Soenneker.Maui.Admob.Platforms.Android.Abstract;
 using Android.Gms.Ads;
-using Soenneker.Utils.AsyncInitializers;
+using Soenneker.Asyncs.Initializers;
 
 namespace Soenneker.Maui.Admob.Platforms.Android;
 
