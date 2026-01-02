@@ -17,7 +17,7 @@
         <AssemblyName>Soenneker.Maui.Admob</AssemblyName>
         <PackageId>Soenneker.Maui.Admob</PackageId>
         <PackageTags>maui admob android ios ads analytics admobutil mauilibrary csharp dotnet c# .net</PackageTags>
-        <Copyright>Copyright © 2025 Jake Soenneker</Copyright>
+        <Copyright>Copyright © 2025-2026 Jake Soenneker</Copyright>
         <Authors>Jake Soenneker</Authors>
         <Company>https://soenneker.com</Company>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
