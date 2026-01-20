@@ -46,7 +46,7 @@
     <ItemGroup>
         <PackageReference Include="Intellenum" Version="2.0.1" />
         <PackageReference Include="Microsoft.Maui.Controls" Version="10.0.30" />
-        <PackageReference Include="Soenneker.Asyncs.Initializers" Version="4.0.12" />
+        <PackageReference Include="Soenneker.Asyncs.Initializers" Version="4.0.13" />
         <PackageReference Include="Soenneker.Dtos.ProblemDetails" Version="4.0.413" />
         <PackageReference Include="Soenneker.Extensions.Configuration" Version="4.0.761" />
         <PackageReference Include="Soenneker.Extensions.Enumerable" Version="4.0.593" />
