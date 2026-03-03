@@ -1,4 +1,6 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Project Sdk="Microsoft.NET.Sdk">
+<?xml version="1.0" encoding="utf-8"?>
+
+<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <TargetFrameworks>net10.0;net10.0-android;net10.0-ios</TargetFrameworks>
@@ -6,8 +8,14 @@
         <Nullable>enable</Nullable>
         <Platforms>AnyCPU</Platforms>
         <NoWarn>$(NoWarn);1591</NoWarn>
-        <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">15.0</SupportedOSPlatformVersion>
-        <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+        <SupportedOSPlatformVersion
+            Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">
+            15.0
+        </SupportedOSPlatformVersion>
+        <SupportedOSPlatformVersion
+            Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
+            21.0
+        </SupportedOSPlatformVersion>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -35,7 +43,8 @@
         <LangVersion>latest</LangVersion>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageIcon>icon.png</PackageIcon>
-    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild></PropertyGroup>
+        <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    </PropertyGroup>
 
     <ItemGroup>
         <None Include="..\README.md" Pack="true" PackagePath="\" />
@@ -44,18 +53,18 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Intellenum" Version="2.0.1" />
+        <PackageReference Include="Soenneker.Gen.EnumValues" Version="4.0.14" />
         <PackageReference Include="Microsoft.Maui.Controls" Version="10.0.41" />
         <PackageReference Include="Soenneker.Asyncs.Initializers" Version="4.0.16" />
         <PackageReference Include="Soenneker.Dtos.ProblemDetails" Version="4.0.414" />
-        <PackageReference Include="Soenneker.Extensions.Configuration" Version="4.0.771" />
+        <PackageReference Include="Soenneker.Extensions.Configuration" Version="4.0.776" />
         <PackageReference Include="Soenneker.Extensions.Enumerable" Version="4.0.594" />
     </ItemGroup>
 
     <ItemGroup Condition="'$(TargetFramework)' == 'net10.0-android'">
-      <PackageReference Include="Xamarin.GooglePlayServices.Ads.Lite">
-        <Version>124.0.0.4</Version>
-      </PackageReference>
+        <PackageReference Include="Xamarin.GooglePlayServices.Ads.Lite">
+            <Version>124.0.0.4</Version>
+        </PackageReference>
     </ItemGroup>
 
     <ItemGroup Condition="'$(TargetFramework)' == 'net10.0-ios'">

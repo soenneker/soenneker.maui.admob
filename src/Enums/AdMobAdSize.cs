@@ -1,4 +1,4 @@
-﻿using Intellenum;
+using Soenneker.Gen.EnumValues;
 
 namespace Soenneker.Maui.Admob.Enums;
 
@@ -8,7 +8,7 @@ namespace Soenneker.Maui.Admob.Enums;
 /// <remarks>
 /// This class provides predefined ad sizes used in Google AdMob for different placements.
 /// </remarks>
-[Intellenum<string>]
+[EnumValue<string>]
 public partial class AdmobAdSize
 {
     /// <summary>
