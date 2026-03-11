@@ -54,7 +54,7 @@
 
     <ItemGroup>
         <PackageReference Include="Soenneker.Gen.EnumValues" Version="4.0.23" />
-        <PackageReference Include="Microsoft.Maui.Controls" Version="10.0.41" />
+        <PackageReference Include="Microsoft.Maui.Controls" Version="10.0.50" />
         <PackageReference Include="Soenneker.Asyncs.Initializers" Version="4.0.30" />
         <PackageReference Include="Soenneker.Dtos.ProblemDetails" Version="4.0.422" />
         <PackageReference Include="Soenneker.Extensions.Configuration" Version="4.0.792" />
