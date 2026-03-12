@@ -41,14 +41,14 @@ jobs:
           languages: csharp
           build-mode: manual
 
-      - name: Install .NET workloads (MAUI)
-        run: dotnet workload restore ./src/Soenneker.Maui.Admob/Soenneker.Maui.Admob.csproj
+      - name: Install .NET workload (MAUI Android)
+        run: dotnet workload install maui-android --skip-manifest-update
 
       - name: Restore src
-        run: dotnet restore ./src/Soenneker.Maui.Admob/Soenneker.Maui.Admob.csproj --verbosity minimal
+        run: dotnet restore ./src/Soenneker.Maui.Admob/Soenneker.Maui.Admob.csproj -f net10.0 --verbosity minimal
 
       - name: Build src
-        run: dotnet build ./src/Soenneker.Maui.Admob/Soenneker.Maui.Admob.csproj --configuration Release --no-restore --verbosity minimal
+        run: dotnet build ./src/Soenneker.Maui.Admob/Soenneker.Maui.Admob.csproj -f net10.0 --configuration Release --no-restore --verbosity minimal
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v4
