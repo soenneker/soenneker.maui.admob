@@ -41,6 +41,9 @@ jobs:
           languages: csharp
           build-mode: manual
 
+      - name: Install .NET workloads (MAUI)
+        run: dotnet workload restore ./src/Soenneker.Maui.Admob/Soenneker.Maui.Admob.csproj
+
       - name: Restore src
         run: dotnet restore ./src/Soenneker.Maui.Admob/Soenneker.Maui.Admob.csproj --verbosity minimal
 
