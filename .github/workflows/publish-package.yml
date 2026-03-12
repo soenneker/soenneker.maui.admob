@@ -53,26 +53,25 @@ jobs:
         run: dotnet workload install maui-android --skip-manifest-update
 
       - name: Restore tests
-        run: dotnet restore test/Soenneker.Maui.Admob.Tests/Soenneker.Maui.Admob.Tests.csproj -f net10.0 --verbosity minimal
+        run: dotnet restore test/Soenneker.Maui.Admob.Tests/Soenneker.Maui.Admob.Tests.csproj --verbosity minimal
 
       - name: Build tests
-        run: dotnet build test/Soenneker.Maui.Admob.Tests/Soenneker.Maui.Admob.Tests.csproj -f net10.0 --configuration Release --no-restore --verbosity minimal
+        run: dotnet build test/Soenneker.Maui.Admob.Tests/Soenneker.Maui.Admob.Tests.csproj --configuration Release --no-restore --verbosity minimal
 
       - name: Test
         run: dotnet test test/Soenneker.Maui.Admob.Tests/Soenneker.Maui.Admob.Tests.csproj -f net10.0 --configuration Release --no-build --no-restore --verbosity normal
 
       - name: Restore library
-        run: dotnet restore src/Soenneker.Maui.Admob/Soenneker.Maui.Admob.csproj -f net10.0 --verbosity minimal
+        run: dotnet restore src/Soenneker.Maui.Admob/Soenneker.Maui.Admob.csproj --verbosity minimal
 
       - name: Build library
-        run: dotnet build src/Soenneker.Maui.Admob/Soenneker.Maui.Admob.csproj -f net10.0 --configuration Release --no-restore --verbosity minimal
+        run: dotnet build src/Soenneker.Maui.Admob/Soenneker.Maui.Admob.csproj --configuration Release --no-restore --verbosity minimal
 
       - name: Pack
         shell: bash
         run: |
           mkdir -p artifacts
           dotnet pack src/Soenneker.Maui.Admob/Soenneker.Maui.Admob.csproj \
-            -f net10.0 \
             --configuration Release \
             --no-build \
             --no-restore \
