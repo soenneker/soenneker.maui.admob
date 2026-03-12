@@ -27,7 +27,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\src\Soenneker.Maui.Admob.csproj" />
+        <ProjectReference Include="..\..\src\Soenneker.Maui.Admob\Soenneker.Maui.Admob.csproj" />
     </ItemGroup>
 
     <ItemGroup>
