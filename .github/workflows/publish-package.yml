@@ -22,7 +22,7 @@ env:
 
 jobs:
   publish-package:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
 
     steps:
       - uses: actions/checkout@v6
@@ -48,9 +48,9 @@ jobs:
         uses: actions/setup-dotnet@v5
         with:
           dotnet-version: 10.0.x
-
-      - name: Install .NET workload (MAUI Android)
-        run: dotnet workload install maui-android --skip-manifest-update
+          
+      - name: Workload restore
+        run: dotnet workload restore src/Soenneker.Maui.Admob/Soenneker.Maui.Admob.csproj --verbosity minimal
 
       - name: Restore tests
         run: dotnet restore test/Soenneker.Maui.Admob.Tests/Soenneker.Maui.Admob.Tests.csproj --verbosity minimal
@@ -75,7 +75,8 @@ jobs:
             --configuration Release \
             --no-build \
             --no-restore \
-            --output ./artifacts
+            --output ./artifacts \
+            --verbosity minimal
 
       - name: Publish to NuGet
         shell: bash
@@ -123,6 +124,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GH__TOKEN }}
         shell: bash
         run: |
+          gh release view "v$BUILD_VERSION" >/dev/null 2>&1 || \
           gh release create "v$BUILD_VERSION" \
             --title "v$BUILD_VERSION" \
             --notes "${{ env.PACKAGE_RELEASE_NOTES }}"

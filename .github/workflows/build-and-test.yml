@@ -19,7 +19,7 @@ env:
 
 jobs:
   build-and-test:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
 
     steps:
       - uses: actions/checkout@v6
@@ -31,8 +31,8 @@ jobs:
         with:
           dotnet-version: 10.0.x
 
-      - name: Install .NET workload (MAUI Android)
-        run: dotnet workload install maui-android --skip-manifest-update
+      - name: Workload restore
+        run: dotnet workload restore src/Soenneker.Maui.Admob/Soenneker.Maui.Admob.csproj --verbosity minimal
 
       - name: Restore tests
         run: dotnet restore test/Soenneker.Maui.Admob.Tests/Soenneker.Maui.Admob.Tests.csproj --verbosity minimal
