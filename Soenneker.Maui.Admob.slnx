@@ -11,6 +11,7 @@
     <Project Path="src/Soenneker.Maui.Admob/Soenneker.Maui.Admob.csproj" />
   </Folder>
   <Folder Name="/test/">
+    <Project Path="test/Soenneker.Maui.Admob.Demo/Soenneker.Maui.Admob.Demo.csproj" Id="048d8a52-3ec6-414b-a741-28d25ec79122" />
     <Project Path="test/Soenneker.Maui.Admob.Tests/Soenneker.Maui.Admob.Tests.csproj" />
   </Folder>
 </Solution>

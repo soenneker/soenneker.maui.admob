@@ -51,7 +51,7 @@ public class BannerAdHandler : ViewHandler<BannerAd, AdView>
         }
 
         // Build the AdView with the correct AdUnitId and AdSize
-        var adView = BuildView();
+        AdView adView = BuildView();
         adView.AdListener = BuildListener();
 
         // Apply test device configuration if available
@@ -125,7 +125,7 @@ public class BannerAdHandler : ViewHandler<BannerAd, AdView>
 
     private AdView BuildView()
     {
-        var adSize = VirtualView?.Size == AdmobAdSize.Custom
+        AdSize adSize = VirtualView?.Size == AdmobAdSize.Custom
             ? new AdSize(VirtualView.ContentWidth, VirtualView.ContentHeight)
             : VirtualView?.Size.ToAdSize() ?? AdSize.Banner;
 

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Soenneker.Maui.Admob.Demo.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="24"
+            Spacing="18">
+            <Label
+                Text="Soenneker.Maui.Admob Demo"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1" />
+
+            <Label
+                Text="This page renders a test AdMob banner on Android."
+                Style="{StaticResource SubHeadline}" />
+
+            <Border
+                StrokeShape="RoundRectangle 12"
+                Padding="16">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Text="Banner status"
+                        FontAttributes="Bold" />
+
+                    <Label
+                        x:Name="StatusLabel"
+                        Text="Waiting for banner..." />
+
+                    <Grid
+                        x:Name="BannerHost"
+                        MinimumHeightRequest="60" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Label
+                x:Name="PlatformNoteLabel"
+                Text="The banner demo is active on Android. Other platforms display this placeholder." />
+
+            <Button
+                x:Name="CounterBtn"
+                Text="Click me"
+                SemanticProperties.Hint="Counts the number of times you click"
+                Clicked="OnCounterClicked"
+                HorizontalOptions="Fill" />
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
