@@ -7,8 +7,6 @@
 
 `Soenneker.Maui.Admob` is a .NET MAUI AdMob helper.
 
-The clearest supported path in this repo right now is Android banner ads with `BannerAd`.
-
 ## Install
 
 ```bash
