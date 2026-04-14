@@ -61,7 +61,7 @@
         <PackageReference Include="Soenneker.Asyncs.Initializers" Version="4.0.45" />
         <PackageReference Include="Soenneker.Dtos.ProblemDetails" Version="4.0.435" />
         <PackageReference Include="Soenneker.Extensions.Configuration" Version="4.0.810" />
-        <PackageReference Include="Soenneker.Extensions.Enumerable" Version="4.0.621" />
+        <PackageReference Include="Soenneker.Extensions.Enumerable" Version="4.0.622" />
     </ItemGroup>
 
     <ItemGroup Condition="'$(TargetFramework)' == 'net10.0-android'">
