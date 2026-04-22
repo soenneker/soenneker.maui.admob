@@ -1,17 +1,16 @@
-﻿using Soenneker.Tests.FixturedUnit;
-using Xunit;
+using Soenneker.Tests.HostedUnit;
 
 namespace Soenneker.Maui.Admob.Tests;
 
-[Collection("Collection")]
-public class AdmobUtilTests : FixturedUnitTest
+[ClassDataSource<Host>(Shared = SharedType.PerTestSession)]
+public class AdmobUtilTests : HostedUnitTest
 {
 
-    public AdmobUtilTests(Fixture fixture, ITestOutputHelper output) : base(fixture, output)
+    public AdmobUtilTests(Host host) : base(host)
     {
     }
 
-    [Fact]
+    [Test]
     public void Default()
     {
 
