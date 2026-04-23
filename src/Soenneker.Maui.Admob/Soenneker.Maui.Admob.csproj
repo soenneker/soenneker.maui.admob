@@ -53,10 +53,10 @@
     <ItemGroup>
         <PackageReference Include="Soenneker.Gen.EnumValues" Version="4.0.33" />
         <PackageReference Include="Microsoft.Maui.Controls" Version="10.0.51" />
-        <PackageReference Include="Soenneker.Asyncs.Initializers" Version="4.0.45" />
-        <PackageReference Include="Soenneker.Dtos.ProblemDetails" Version="4.0.436" />
-        <PackageReference Include="Soenneker.Extensions.Configuration" Version="4.0.813" />
-        <PackageReference Include="Soenneker.Extensions.Enumerable" Version="4.0.622" />
+        <PackageReference Include="Soenneker.Asyncs.Initializers" Version="4.0.48" />
+        <PackageReference Include="Soenneker.Dtos.ProblemDetails" Version="4.0.438" />
+        <PackageReference Include="Soenneker.Extensions.Configuration" Version="4.0.816" />
+        <PackageReference Include="Soenneker.Extensions.Enumerable" Version="4.0.625" />
     </ItemGroup>
 
     <ItemGroup Condition="'$(TargetFramework)' == 'net10.0-android'">
