@@ -16,20 +16,13 @@
         </Content>
     </ItemGroup>
 
-<<<<<<< HEAD
     <ItemGroup>
         <PackageReference Include="Soenneker.Utils.Test" Version="4.0.315" />
         <PackageReference Include="Soenneker.Tests.HostedUnit" Version="4.0.13" />
         <PackageReference Include="TUnit" Version="1.37.24" />
-=======
-    <ItemGroup><PackageReference Include="Soenneker.Utils.Test" Version="4.0.315" />
-        <PackageReference Include="Soenneker.Tests.FixturedUnit" Version="4.0.2305" />
-        <PackageReference Include="xUnit.v3" Version="3.2.2" />
->>>>>>> a9dffb3c77f6666ec9a9dd3a32263041c1f29734
     </ItemGroup>
 
     <ItemGroup>
         <ProjectReference Include="..\..\src\Soenneker.Maui.Admob\Soenneker.Maui.Admob.csproj" />
     </ItemGroup>
 </Project>
-
