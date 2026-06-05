@@ -4,6 +4,7 @@ using Soenneker.Asyncs.Initializers;
 
 namespace Soenneker.Maui.Admob.Platforms.Android;
 
+/// <inheritdoc cref="IAdMobServiceUtil"/>
 public class AdMobServiceUtil : IAdMobServiceUtil
 {
     private readonly AsyncInitializer _initializer;

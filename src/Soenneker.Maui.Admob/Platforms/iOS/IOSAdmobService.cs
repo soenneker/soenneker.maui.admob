@@ -7,6 +7,7 @@ using UIKit;
 namespace Soenneker.Maui.Admob.Platforms.iOS;
 
 // ReSharper disable once InconsistentNaming
+/// <inheritdoc cref="IAdMobService"/>
 public class IOSAdmobService : IAdMobService
 {
     private BannerView _bannerView;

@@ -14,8 +14,16 @@ using Soenneker.Maui.Admob.Platforms.iOS;
 
 namespace Soenneker.Maui.Admob.Registrars;
 
+/// <summary>
+/// Represents the ad mob service registrar.
+/// </summary>
 public static class AdMobServiceRegistrar
 {
+    /// <summary>
+    /// Adds ad mob service.
+    /// </summary>
+    /// <param name="builder">The builder.</param>
+    /// <returns>The result of the operation.</returns>
     public static MauiAppBuilder AddAdMobService(this MauiAppBuilder builder)
     {
         builder.Services.TryAddSingleton<IAdMobService>(serviceProvider =>

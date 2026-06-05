@@ -15,8 +15,14 @@ using Soenneker.Maui.Admob.Platforms.Android.Banner;
 
 namespace Soenneker.Maui.Admob;
 
+/// <summary>
+/// Represents the banner ad handler.
+/// </summary>
 public class BannerAdHandler : ViewHandler<BannerAd, AdView>
 {
+    /// <summary>
+    /// The property mapper.
+    /// </summary>
     public static PropertyMapper<BannerAd, BannerAdHandler> PropertyMapper = new(ViewMapper);
 
     private List<string>? _testDevices;

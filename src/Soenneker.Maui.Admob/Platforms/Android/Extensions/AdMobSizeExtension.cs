@@ -3,8 +3,16 @@ using Soenneker.Maui.Admob.Enums;
 
 namespace Soenneker.Maui.Admob.Platforms.Android.Extensions;
 
+/// <summary>
+/// Represents the admob ad size extensions.
+/// </summary>
 public static class AdmobAdSizeExtensions
 {
+    /// <summary>
+    /// Executes the to ad size operation.
+    /// </summary>
+    /// <param name="admobAdSize">The admob ad size.</param>
+    /// <returns>The result of the operation.</returns>
     public static AdSize? ToAdSize(this AdmobAdSize admobAdSize)
     {
         AdSize? adSize = admobAdSize.Name switch
