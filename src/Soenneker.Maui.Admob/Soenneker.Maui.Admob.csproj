@@ -5,12 +5,8 @@
         <Nullable>enable</Nullable>
         <Platforms>AnyCPU</Platforms>
         <NoWarn>$(NoWarn);1591</NoWarn>
-        <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">
-            15.0
-        </SupportedOSPlatformVersion>
-        <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
-            21.0
-        </SupportedOSPlatformVersion>
+        <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">15.0</SupportedOSPlatformVersion>
+        <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -53,23 +49,22 @@
     <ItemGroup>
         <PackageReference Include="Soenneker.Gen.EnumValues" Version="4.0.39" />
         <PackageReference Include="Microsoft.Maui.Controls" Version="10.0.80" />
-        <PackageReference Include="Soenneker.Asyncs.Initializers" Version="4.0.63" />
         <PackageReference Include="Soenneker.Dtos.ProblemDetails" Version="4.0.444" />
-        <PackageReference Include="Soenneker.Extensions.Configuration" Version="4.0.840" />
-        <PackageReference Include="Soenneker.Extensions.Enumerable" Version="4.0.637" />
+        <PackageReference Include="Xamarin.Build.Download" Version="0.11.4" PrivateAssets="all" />
     </ItemGroup>
 
     <ItemGroup Condition="'$(TargetFramework)' == 'net10.0-android'">
+        <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="10.0.9" />
         <PackageReference Include="Xamarin.GooglePlayServices.Ads.Lite">
-            <Version>124.0.0.5</Version>
+            <Version>124.0.0.7</Version>
         </PackageReference>
-        <PackageReference Include="Xamarin.AndroidX.Fragment.Ktx" Version="1.8.9.2" />
-        <PackageReference Include="Xamarin.AndroidX.Activity.Ktx" Version="1.12.4.1" />
-        <PackageReference Include="Xamarin.AndroidX.Lifecycle.ViewModel.Ktx" Version="2.10.0.2" />
-        <PackageReference Include="Xamarin.AndroidX.SavedState.SavedState.Ktx" Version="1.4.0.2" />
-        <PackageReference Include="Xamarin.AndroidX.Lifecycle.Runtime.Ktx.Android" Version="2.10.0.2" />
-        <PackageReference Include="Xamarin.AndroidX.Lifecycle.Runtime.Ktx" Version="2.10.0.2" />
-        <PackageReference Include="Xamarin.AndroidX.Lifecycle.Process" Version="2.10.0.2" />
+        <PackageReference Include="Xamarin.AndroidX.Fragment.Ktx" Version="1.8.9.4" />
+        <PackageReference Include="Xamarin.AndroidX.Activity.Ktx" Version="1.13.0.1" />
+        <PackageReference Include="Xamarin.AndroidX.Lifecycle.ViewModel.Ktx" Version="2.11.0.1" />
+        <PackageReference Include="Xamarin.AndroidX.SavedState.SavedState.Ktx" Version="1.5.0.1" />
+        <PackageReference Include="Xamarin.AndroidX.Lifecycle.Runtime.Ktx.Android" Version="2.11.0.1" />
+        <PackageReference Include="Xamarin.AndroidX.Lifecycle.Runtime.Ktx" Version="2.11.0.1" />
+        <PackageReference Include="Xamarin.AndroidX.Lifecycle.Process" Version="2.11.0.1" />
     </ItemGroup>
 
     <ItemGroup Condition="'$(TargetFramework)' == 'net10.0-ios'">

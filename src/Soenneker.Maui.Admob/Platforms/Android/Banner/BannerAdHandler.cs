@@ -4,7 +4,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Maui;
 using Microsoft.Maui.Handlers;
 using Soenneker.Dtos.ProblemDetails;
-using Soenneker.Extensions.Enumerable;
 using Soenneker.Maui.Admob.Constants;
 using Soenneker.Maui.Admob.Enums;
 using Soenneker.Maui.Admob.Platforms.Android.Abstract;
@@ -48,7 +47,7 @@ public class BannerAdHandler : ViewHandler<BannerAd, AdView>
                 var unitId = config.GetValue<string?>("AdMob:BannerUnitId");
                 var testMode = config.GetValue<bool>("AdMob:TestMode");
 
-                _unitId = testMode || unitId.IsNullOrEmpty()
+                _unitId = testMode || string.IsNullOrEmpty(unitId)
                     ? AdmobUnitIdConstants.Banner
                     : unitId;
             }
@@ -63,7 +62,7 @@ public class BannerAdHandler : ViewHandler<BannerAd, AdView>
         // Apply test device configuration if available
         var requestConfigBuilder = new RequestConfiguration.Builder();
 
-        if (_testDevices != null && _testDevices.Populated())
+        if (_testDevices is { Count: > 0 })
             requestConfigBuilder.SetTestDeviceIds(_testDevices);
 
         MobileAds.RequestConfiguration = requestConfigBuilder.Build();
@@ -131,9 +130,12 @@ public class BannerAdHandler : ViewHandler<BannerAd, AdView>
 
     private AdView BuildView()
     {
-        AdSize adSize = VirtualView?.Size == AdmobAdSize.Custom
-            ? new AdSize(VirtualView.ContentWidth, VirtualView.ContentHeight)
-            : VirtualView?.Size.ToAdSize() ?? AdSize.Banner;
+        BannerAd? banner = VirtualView;
+        AdmobAdSize? size = banner?.Size;
+
+        AdSize adSize = size == AdmobAdSize.Custom
+            ? new AdSize(banner!.ContentWidth, banner.ContentHeight)
+            : size is { } resolvedSize ? resolvedSize.ToAdSize() ?? AdSize.Banner : AdSize.Banner;
 
         return new AdView(Context)
         {

@@ -1,5 +1,3 @@
-using System.Runtime.Versioning;
-
 namespace Soenneker.Maui.Admob.Demo
 {
     public partial class MainPage : ContentPage
@@ -34,7 +32,6 @@ namespace Soenneker.Maui.Admob.Demo
         }
 
 #if ANDROID
-        [SupportedOSPlatform("Android")]
         private void InitializeAndroidBannerDemo()
         {
             PlatformNoteLabel.Text = "Android is using the Google AdMob test banner.";

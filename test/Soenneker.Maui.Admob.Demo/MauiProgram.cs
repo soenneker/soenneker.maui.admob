@@ -1,7 +1,6 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Soenneker.Maui.Admob.Registrars;
-using System.Runtime.Versioning;
 
 namespace Soenneker.Maui.Admob.Demo
 {
@@ -23,18 +22,14 @@ namespace Soenneker.Maui.Admob.Demo
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
-#if ANDROID
-#endif
-
 #if DEBUG
-    		builder.Logging.AddDebug();
+			builder.Logging.AddDebug();
 #endif
 
             return builder.Build();
         }
 
 #if ANDROID
-        [SupportedOSPlatform("Android")]
         private static void ConfigureAndroidAdMob(MauiAppBuilder builder)
         {
             builder.Configuration.AddInMemoryCollection(new Dictionary<string, string?>
