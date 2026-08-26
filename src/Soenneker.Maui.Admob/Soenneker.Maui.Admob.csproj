@@ -50,7 +50,7 @@
         <PackageReference Include="Soenneker.Gen.EnumValues" Version="4.0.44" />
         <PackageReference Include="Microsoft.Maui.Controls" Version="10.0.100" />
         <PackageReference Include="Soenneker.Dtos.ProblemDetails" Version="4.0.452" />
-        <PackageReference Include="Xamarin.Build.Download" Version="0.11.5" PrivateAssets="all" />
+        <PackageReference Include="Xamarin.Build.Download" Version="0.11.6" PrivateAssets="all" />
     </ItemGroup>
 
     <ItemGroup Condition="'$(TargetFramework)' == 'net10.0-android'">
