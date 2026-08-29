@@ -9,10 +9,10 @@ namespace Soenneker.Maui.Admob.Platforms.Android.Extensions;
 public static class AdmobAdSizeExtensions
 {
     /// <summary>
-    /// Executes the to ad size operation.
+    /// Converts to ad Size.
     /// </summary>
-    /// <param name="admobAdSize">The admob ad size.</param>
-    /// <returns>The result of the operation.</returns>
+    /// <param name="admobAdSize">Admob Ad Size for the to ad size operation.</param>
+    /// <returns>The resulting ad Size.</returns>
     public static AdSize? ToAdSize(this AdmobAdSize admobAdSize)
     {
         AdSize? adSize = admobAdSize.Name switch

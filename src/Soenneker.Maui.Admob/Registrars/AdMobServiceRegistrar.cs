@@ -22,8 +22,8 @@ public static class AdMobServiceRegistrar
     /// <summary>
     /// Adds ad mob service.
     /// </summary>
-    /// <param name="builder">The builder.</param>
-    /// <returns>The result of the operation.</returns>
+    /// <param name="builder">Builder to configure.</param>
+    /// <returns>The same builder instance, so additional classes or variants can be chained.</returns>
     public static MauiAppBuilder AddAdMobService(this MauiAppBuilder builder)
     {
         builder.Services.TryAddSingleton<IAdMobService>(serviceProvider =>

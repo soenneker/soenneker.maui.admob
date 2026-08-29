@@ -52,32 +52,32 @@ public interface IAdMobService
     event Action OnRewardEarned;
 
     /// <summary>
-    /// Executes the initialize operation.
+    /// Initializes the ad mob service so it is ready for use.
     /// </summary>
     void Initialize();
     /// <summary>
-    /// Executes the load banner ad operation.
+    /// Loads banner Ad.
     /// </summary>
-    /// <param name="adUnitId">The ad unit id.</param>
-    /// <param name="adContainer">The ad container.</param>
+    /// <param name="adUnitId">Identifier of the ad unit to target.</param>
+    /// <param name="adContainer">Ad Container for the load banner ad operation.</param>
     void LoadBannerAd(string adUnitId, View adContainer);
     /// <summary>
-    /// Executes the load interstitial ad operation.
+    /// Loads interstitial Ad for the ad mob service.
     /// </summary>
-    /// <param name="adUnitId">The ad unit id.</param>
+    /// <param name="adUnitId">Identifier of the ad unit to target.</param>
     void LoadInterstitialAd(string adUnitId);
     /// <summary>
-    /// Executes the show interstitial ad operation.
+    /// Shows interstitial Ad for the ad mob service.
     /// </summary>
     void ShowInterstitialAd();
     /// <summary>
-    /// Executes the load rewarded ad operation.
+    /// Loads rewarded Ad for the ad mob service.
     /// </summary>
-    /// <param name="adUnitId">The ad unit id.</param>
+    /// <param name="adUnitId">Identifier of the ad unit to target.</param>
     void LoadRewardedAd(string adUnitId);
     /// <summary>
-    /// Executes the show rewarded ad operation.
+    /// Shows rewarded Ad for the ad mob service.
     /// </summary>
-    /// <param name="rewardCallback">The reward callback.</param>
+    /// <param name="rewardCallback">reward Callback to invoke when the operation runs.</param>
     void ShowRewardedAd(Action rewardCallback);
 }
