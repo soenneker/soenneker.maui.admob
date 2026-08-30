@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Maui;
 using Microsoft.Maui.Handlers;
+using Microsoft.Maui.Devices;
 using Soenneker.Dtos.ProblemDetails;
 using Soenneker.Maui.Admob.Constants;
 using Soenneker.Maui.Admob.Enums;
@@ -133,9 +134,27 @@ public class BannerAdHandler : ViewHandler<BannerAd, AdView>
         BannerAd? banner = VirtualView;
         AdmobAdSize? size = banner?.Size;
 
-        AdSize adSize = size == AdmobAdSize.Custom
-            ? new AdSize(banner!.ContentWidth, banner.ContentHeight)
-            : size is { } resolvedSize ? resolvedSize.ToAdSize() ?? AdSize.Banner : AdSize.Banner;
+        AdSize adSize;
+
+        if (size == AdmobAdSize.Custom)
+        {
+            if (banner!.ContentWidth <= 0 || banner.ContentHeight <= 0)
+                throw new InvalidOperationException("Custom banner dimensions must be greater than zero.");
+
+            adSize = new AdSize(banner.ContentWidth, banner.ContentHeight);
+        }
+        else if (size == AdmobAdSize.AdaptiveBanner)
+        {
+            int width = banner?.ContentWidth > 0
+                ? banner.ContentWidth
+                : (int)(DeviceDisplay.Current.MainDisplayInfo.Width / DeviceDisplay.Current.MainDisplayInfo.Density);
+
+            adSize = AdSize.GetCurrentOrientationAnchoredAdaptiveBannerAdSize(Context, width);
+        }
+        else
+        {
+            adSize = size is { } resolvedSize ? resolvedSize.ToAdSize() ?? AdSize.Banner : AdSize.Banner;
+        }
 
         return new AdView(Context)
         {

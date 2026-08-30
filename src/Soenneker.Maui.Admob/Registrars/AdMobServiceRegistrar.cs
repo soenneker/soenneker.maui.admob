@@ -26,13 +26,9 @@ public static class AdMobServiceRegistrar
     /// <returns>The same builder instance, so additional classes or variants can be chained.</returns>
     public static MauiAppBuilder AddAdMobService(this MauiAppBuilder builder)
     {
-        builder.Services.TryAddSingleton<IAdMobService>(serviceProvider =>
-        {
 #if IOS
-                return new IOSAdmobService();
+        builder.Services.TryAddSingleton<IAdMobService, IOSAdmobService>();
 #endif
-            return null!;
-        });
 
 #if ANDROID
         builder.Services.TryAddSingleton<IAdMobServiceUtil, AdMobServiceUtil>();

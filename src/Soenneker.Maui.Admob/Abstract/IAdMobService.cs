@@ -11,45 +11,45 @@ public interface IAdMobService
     /// <summary>
     /// Occurs when on banner ad loaded.
     /// </summary>
-    event Action OnBannerAdLoaded;
+    event Action? OnBannerAdLoaded;
     /// <summary>
     /// Occurs when on banner ad failed to load.
     /// </summary>
-    event Action<string> OnBannerAdFailedToLoad;
+    event Action<string>? OnBannerAdFailedToLoad;
     /// <summary>
     /// Occurs when on banner ad clicked.
     /// </summary>
-    event Action OnBannerAdClicked;
+    event Action? OnBannerAdClicked;
 
     /// <summary>
     /// Occurs when on interstitial ad loaded.
     /// </summary>
-    event Action OnInterstitialAdLoaded;
+    event Action? OnInterstitialAdLoaded;
     /// <summary>
     /// Occurs when on interstitial ad failed to load.
     /// </summary>
-    event Action<string> OnInterstitialAdFailedToLoad;
+    event Action<string>? OnInterstitialAdFailedToLoad;
     /// <summary>
     /// Occurs when on interstitial ad closed.
     /// </summary>
-    event Action OnInterstitialAdClosed;
+    event Action? OnInterstitialAdClosed;
 
     /// <summary>
     /// Occurs when on rewarded ad loaded.
     /// </summary>
-    event Action OnRewardedAdLoaded;
+    event Action? OnRewardedAdLoaded;
     /// <summary>
     /// Occurs when on rewarded ad failed to load.
     /// </summary>
-    event Action<string> OnRewardedAdFailedToLoad;
+    event Action<string>? OnRewardedAdFailedToLoad;
     /// <summary>
     /// Occurs when on rewarded ad closed.
     /// </summary>
-    event Action OnRewardedAdClosed;
+    event Action? OnRewardedAdClosed;
     /// <summary>
     /// Occurs when on reward earned.
     /// </summary>
-    event Action OnRewardEarned;
+    event Action? OnRewardEarned;
 
     /// <summary>
     /// Initializes the ad mob service so it is ready for use.

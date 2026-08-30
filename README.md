@@ -5,7 +5,7 @@
 
 # ![](https://user-images.githubusercontent.com/4441470/224455560-91ed3ee7-f510-4041-a8d2-3fc093025112.png) Soenneker.Maui.Admob
 
-`Soenneker.Maui.Admob` is a .NET MAUI AdMob helper.
+`Soenneker.Maui.Admob` provides an Android `BannerAd` control and an iOS AdMob service for .NET MAUI applications.
 
 ## Install
 
@@ -97,6 +97,10 @@ Available sizes:
 
 If you use `Custom`, also set `ContentWidth` and `ContentHeight`.
 
+For `AdaptiveBanner`, set `ContentWidth` to the available width in device-independent pixels. When it is omitted, the Android handler uses the current display width.
+
+Set the size and custom dimensions before adding the control to the visual tree.
+
 ## Banner Events
 
 `BannerAd` exposes:
@@ -128,3 +132,9 @@ It shows the entire Android banner flow:
 - shows banner load/click/impression status
 
 It uses Google's test ids, so it is safe to run as-is.
+
+## Platform behavior
+
+- Android registers the `BannerAd` handler and `IAdMobServiceUtil` initialization service.
+- iOS registers `IAdMobService` for banner, interstitial, and rewarded ads. The `BannerAd` control itself is Android-only.
+- Other targets do not register an AdMob service; resolving `IAdMobService` will fail instead of returning a null service.
