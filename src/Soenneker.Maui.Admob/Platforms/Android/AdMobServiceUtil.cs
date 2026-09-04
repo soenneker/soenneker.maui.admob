@@ -3,6 +3,7 @@ using Android.Gms.Ads;
 
 namespace Soenneker.Maui.Admob.Platforms.Android;
 
+/// <inheritdoc cref="IAdMobServiceUtil" />
 public class AdMobServiceUtil : IAdMobServiceUtil
 {
     private readonly object _initializationLock = new();
