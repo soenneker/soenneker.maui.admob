@@ -84,7 +84,7 @@ jobs:
             --verbosity minimal
 
       - name: Log in to NuGet
-        uses: soenneker/nuget-resilient-login@v2
+        uses: soenneker/nuget-resilient-login@v3
         id: nuget-login
         with:
           user: soenneker
