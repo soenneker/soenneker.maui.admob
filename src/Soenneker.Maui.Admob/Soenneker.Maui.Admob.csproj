@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFrameworks>net10.0;net10.0-android;net10.0-ios</TargetFrameworks>
+        <TargetFrameworks>net11.0;net11.0-android;net11.0-ios</TargetFrameworks>
         <IsAotCompatible>true</IsAotCompatible>
         <EnableConfigurationBindingGenerator>true</EnableConfigurationBindingGenerator>
         <SingleProject>true</SingleProject>
@@ -8,12 +8,12 @@
         <Platforms>AnyCPU</Platforms>
         <NoWarn>$(NoWarn);1591</NoWarn>
         <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">15.0</SupportedOSPlatformVersion>
-        <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+        <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">24.0</SupportedOSPlatformVersion>
     </PropertyGroup>
 
     <PropertyGroup>
         <Description>A cross-platform library for adding Google Admob ads to MAUI applications</Description>
-        <Version Condition="'$(BUILD_VERSION)' == ''">4.0.0</Version>
+        <Version Condition="'$(BUILD_VERSION)' == ''">11.0.0</Version>
         <Version Condition="'$(BUILD_VERSION)' != ''">$(BUILD_VERSION)</Version>
         <AssemblyName>Soenneker.Maui.Admob</AssemblyName>
         <PackageId>Soenneker.Maui.Admob</PackageId>
@@ -51,12 +51,12 @@
     <ItemGroup>
         <PackageReference Include="Soenneker.Gen.EnumValues" Version="4.0.64" />
         <PackageReference Include="Microsoft.Maui.Controls" Version="10.0.120" />
-        <PackageReference Include="Soenneker.Dtos.ProblemDetails" Version="4.0.479" />
+        <PackageReference Include="Soenneker.Dtos.ProblemDetails" Version="4.0.480" />
         <PackageReference Include="Xamarin.Build.Download" Version="0.11.6" PrivateAssets="all" />
     </ItemGroup>
 
-    <ItemGroup Condition="'$(TargetFramework)' == 'net10.0-android'">
-        <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="10.0.13" />
+    <ItemGroup Condition="'$(TargetFramework)' == 'net11.0-android'">
+        <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="11.0.0-rc.3.26522.148" />
         <PackageReference Include="Xamarin.GooglePlayServices.Ads.Lite">
             <Version>124.0.0.9</Version>
         </PackageReference>
@@ -69,7 +69,7 @@
         <PackageReference Include="Xamarin.AndroidX.Lifecycle.Process" Version="2.11.0.1" />
     </ItemGroup>
 
-    <ItemGroup Condition="'$(TargetFramework)' == 'net10.0-ios'">
+    <ItemGroup Condition="'$(TargetFramework)' == 'net11.0-ios'">
         <PackageReference Include="Xamarin.Google.iOS.MobileAds">
             <Version>8.13.0.3</Version>
         </PackageReference>
