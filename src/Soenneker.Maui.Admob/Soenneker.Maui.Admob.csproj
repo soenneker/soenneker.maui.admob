@@ -50,7 +50,7 @@
 
     <ItemGroup>
         <PackageReference Include="Soenneker.Gen.EnumValues" Version="11.0.65" />
-        <PackageReference Include="Microsoft.Maui.Controls" Version="10.0.120" />
+        <PackageReference Include="Microsoft.Maui.Controls" Version="11.0.0-rc.2.26505.5" />
         <PackageReference Include="Soenneker.Dtos.ProblemDetails" Version="11.0.483" />
         <PackageReference Include="Xamarin.Build.Download" Version="0.11.6" PrivateAssets="all" />
     </ItemGroup>
@@ -61,6 +61,7 @@
             <Version>124.0.0.9</Version>
         </PackageReference>
         <PackageReference Include="Xamarin.AndroidX.Fragment.Ktx" Version="1.9.1" />
+        <PackageReference Include="Xamarin.AndroidX.Tracing.Tracing.Ktx" Version="2.0.3" />
         <PackageReference Include="Xamarin.AndroidX.Activity.Ktx" Version="1.13.0.1" />
         <PackageReference Include="Xamarin.AndroidX.Lifecycle.ViewModel.Ktx" Version="2.11.0.1" />
         <PackageReference Include="Xamarin.AndroidX.SavedState.SavedState.Ktx" Version="1.5.0.1" />
