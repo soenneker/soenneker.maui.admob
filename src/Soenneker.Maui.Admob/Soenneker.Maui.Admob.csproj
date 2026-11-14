@@ -49,7 +49,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Soenneker.Gen.EnumValues" Version="11.0.66" />
+        <PackageReference Include="Soenneker.Gen.EnumValues" Version="11.0.67" />
         <PackageReference Include="Microsoft.Maui.Controls" Version="11.0.10" />
         <PackageReference Include="Soenneker.Dtos.ProblemDetails" Version="11.0.485" />
         <PackageReference Include="Xamarin.Build.Download" Version="0.11.6" PrivateAssets="all" />
